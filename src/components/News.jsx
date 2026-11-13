@@ -1,7 +1,27 @@
+import './News.css';
+import Calendar from './Calendar';
+import Weather from './Weather';
+
 const News = () => {
   return (
-    <div>
-      <h2>Latest News</h2>
+    <div className="news">
+      <header className="news-header">News</header>
+      <div className="news-content">
+        <div className="navbar">
+          <div className="user">User</div>
+          <nav className="categories">Categories</nav>
+        </div>
+        <div className="news-section">
+          <div className="headline">Headline</div>
+          <div className="news-grid">News Grid</div>
+        </div>
+        <div className="my-blogs">My Blogs</div>
+        <div className="w-c-container">
+          <Weather />
+          <Calendar />
+        </div>
+      </div>
+      <footer className="news-footer">Footer</footer>
     </div>
   );
 };
