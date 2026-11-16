@@ -1,15 +1,38 @@
+import axios from 'axios';
 import './News.css';
+import { useState, useEffect } from 'react';
 import Calendar from './Calendar';
 import Weather from './Weather';
 import userImg from '../assets/img/user.jpg';
-import techImg from '../assets/img/tech.jpg';
-import sportsImg from '../assets/img/sports.jpg';
-import scienceImg from '../assets/img/science.jpg';
-import worldImg from '../assets/img/world.jpg';
-import healthImg from '../assets/img/health.jpg';
-import nationImg from '../assets/img/nation.jpg';
+import noImg from '../assets/img/no-img.png';
 
 const News = () => {
+  const [headline, setHeadline] = useState(null);
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      const api_key = '33b4de5ac8d377bc174b246739a92920';
+      const url = `https://gnews.io/api/v4/top-headlines?category=business&lang=en&apikey=${api_key}`;
+
+      const response = await axios.get(url);
+      const fetchedNews = response.data.articles;
+
+      fetchedNews.forEach((article) => {
+        if (!article.image) {
+          article.image = noImg;
+        }
+      });
+
+      setHeadline(fetchedNews[0]);
+      setNews(fetchedNews.slice(1, 7));
+      // console.log(fetchedNews[0]);
+      // console.log(news);
+    };
+
+    fetchNews();
+  }, []);
+
   return (
     <div className="news">
       <header className="news-header">
@@ -39,6 +62,9 @@ const News = () => {
                 World
               </a>
               <a href="#" className="nav-link">
+                Nation
+              </a>
+              <a href="#" className="nav-link">
                 Business
               </a>
               <a href="#" className="nav-link">
@@ -57,66 +83,27 @@ const News = () => {
                 Health
               </a>
               <a href="#" className="nav-link">
-                Travel
-              </a>
-              <a href="#" className="nav-link">
-                Lifestyle
-              </a>
-              <a href="#" className="nav-link">
-                Food
-              </a>
-              <a href="#" className="nav-link">
-                Nation
-              </a>
-              <a href="#" className="nav-link">
                 Bookmarks <i className="fa-regular fa-bookmark"></i>
               </a>
             </div>
           </nav>
         </div>
         <div className="news-section">
-          <div className="headline">
-            <img src={techImg} alt="Headline img" />
-            <h2 className="headline-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, porro.</h2>
-            <i className="fa-regular fa-bookmark bookmark"></i>
-          </div>
+          {headline && (
+            <div className="headline">
+              <img src={headline.image || noImg} alt={headline.title} />
+              <h2 className="headline-title">{headline.title}</h2>
+            </div>
+          )}
           <div className="news-grid">
-            <div className="news-grid-item">
-              <img src={techImg} alt="News img" />
-              <h3>
-                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
-              </h3>
-            </div>
-             <div className="news-grid-item">
-              <img src={sportsImg} alt="News img" />
-              <h3>
-                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
-              </h3>
-            </div>
-            <div className="news-grid-item">
-              <img src={scienceImg} alt="News img" />
-              <h3>
-                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
-              </h3>
-            </div>
-            <div className="news-grid-item">
-              <img src={worldImg} alt="News img" />
-              <h3>
-                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
-              </h3>
-            </div>
-            <div className="news-grid-item">
-              <img src={healthImg} alt="News img" />
-              <h3>
-                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
-              </h3>
-            </div>
-            <div className="news-grid-item">
-              <img src={nationImg} alt="News img" />
-              <h3>
-                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
-              </h3>
-            </div>
+            {news.map((article, index) => (
+              <div className="news-grid-item" key={index}>
+                <img src={article.image || noImg} alt={article.title} />
+                <h3>
+                  {article.title} <i className="fa-regular fa-bookmark bookmark"></i>
+                </h3>
+              </div>
+            ))}
           </div>
         </div>
         <div className="my-blogs">My Blogs</div>
