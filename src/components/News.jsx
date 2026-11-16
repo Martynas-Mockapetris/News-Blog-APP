@@ -2,6 +2,12 @@ import './News.css';
 import Calendar from './Calendar';
 import Weather from './Weather';
 import userImg from '../assets/img/user.jpg';
+import techImg from '../assets/img/tech.jpg';
+import sportsImg from '../assets/img/sports.jpg';
+import scienceImg from '../assets/img/science.jpg';
+import worldImg from '../assets/img/world.jpg';
+import healthImg from '../assets/img/health.jpg';
+import nationImg from '../assets/img/nation.jpg';
 
 const News = () => {
   return (
@@ -60,14 +66,58 @@ const News = () => {
                 Food
               </a>
               <a href="#" className="nav-link">
+                Nation
+              </a>
+              <a href="#" className="nav-link">
                 Bookmarks <i className="fa-regular fa-bookmark"></i>
               </a>
             </div>
           </nav>
         </div>
         <div className="news-section">
-          <div className="headline">Headline</div>
-          <div className="news-grid">News Grid</div>
+          <div className="headline">
+            <img src={techImg} alt="Headline img" />
+            <h2 className="headline-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, porro.</h2>
+            <i className="fa-regular fa-bookmark bookmark"></i>
+          </div>
+          <div className="news-grid">
+            <div className="news-grid-item">
+              <img src={techImg} alt="News img" />
+              <h3>
+                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
+              </h3>
+            </div>
+             <div className="news-grid-item">
+              <img src={sportsImg} alt="News img" />
+              <h3>
+                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
+              </h3>
+            </div>
+            <div className="news-grid-item">
+              <img src={scienceImg} alt="News img" />
+              <h3>
+                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
+              </h3>
+            </div>
+            <div className="news-grid-item">
+              <img src={worldImg} alt="News img" />
+              <h3>
+                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
+              </h3>
+            </div>
+            <div className="news-grid-item">
+              <img src={healthImg} alt="News img" />
+              <h3>
+                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
+              </h3>
+            </div>
+            <div className="news-grid-item">
+              <img src={nationImg} alt="News img" />
+              <h3>
+                Lorem ipsum dolor sit amet. <i className="fa-regular fa-bookmark bookmark"></i>
+              </h3>
+            </div>
+          </div>
         </div>
         <div className="my-blogs">My Blogs</div>
         <div className="w-c-container">
