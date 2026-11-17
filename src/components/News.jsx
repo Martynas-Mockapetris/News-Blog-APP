@@ -5,6 +5,7 @@ import Calendar from './Calendar';
 import Weather from './Weather';
 import userImg from '../assets/img/user.jpg';
 import noImg from '../assets/img/no-img.png';
+import NewsModal from './NewsModal';
 
 const categories = ['general', 'world', 'nation', 'business', 'technology', 'entertainment', 'sports', 'science', 'health'];
 
@@ -20,8 +21,8 @@ const News = () => {
       const api_key = '33b4de5ac8d377bc174b246739a92920';
       let url = `https://gnews.io/api/v4/top-headlines?category=${selectedCategory}&lang=en&apikey=${api_key}`;
 
-      if(searchQuery) {
-        url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=${api_key}`
+      if (searchQuery) {
+        url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=${api_key}`;
       }
 
       const response = await axios.get(url);
@@ -51,7 +52,7 @@ const News = () => {
     e.preventDefault();
     setSearchQuery(searchInput);
     setSearchInput('');
-  }
+  };
 
   return (
     <div className="news">
@@ -104,6 +105,7 @@ const News = () => {
             ))}
           </div>
         </div>
+        <NewsModal />
         <div className="my-blogs">My Blogs</div>
         <div className="w-c-container">
           <Weather />
