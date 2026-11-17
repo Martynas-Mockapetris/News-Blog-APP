@@ -15,6 +15,8 @@ const News = () => {
   const [selectedCategory, setSelectedCategory] = useState('general');
   const [searchInput, setSearchInput] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState(null);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -54,6 +56,13 @@ const News = () => {
     setSearchInput('');
   };
 
+  const handleArticleClick = (article) => {
+    setSelectedArticle(article);
+    setShowModal(true);
+
+    console.log(article);
+  };
+
   return (
     <div className="news">
       <header className="news-header">
@@ -89,14 +98,14 @@ const News = () => {
         </div>
         <div className="news-section">
           {headline && (
-            <div className="headline">
+            <div className="headline" onClick={() => handleArticleClick(headline)}>
               <img src={headline.image || noImg} alt={headline.title} />
               <h2 className="headline-title">{headline.title}</h2>
             </div>
           )}
           <div className="news-grid">
             {news.map((article, index) => (
-              <div className="news-grid-item" key={index}>
+              <div className="news-grid-item" key={index} onClick={() => handleArticleClick(article)}>
                 <img src={article.image || noImg} alt={article.title} />
                 <h3>
                   {article.title} <i className="fa-regular fa-bookmark bookmark"></i>
@@ -105,7 +114,7 @@ const News = () => {
             ))}
           </div>
         </div>
-        <NewsModal />
+        <NewsModal showModal={showModal} article={selectedArticle} onClose={() => setShowModal(false)} />
         <div className="my-blogs">My Blogs</div>
         <div className="w-c-container">
           <Weather />
