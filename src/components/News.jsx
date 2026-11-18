@@ -6,6 +6,7 @@ import Weather from './Weather';
 import userImg from '../assets/img/user.jpg';
 import noImg from '../assets/img/no-img.png';
 import NewsModal from './NewsModal';
+import Bookmarks from './Bookmarks';
 
 const categories = ['general', 'world', 'nation', 'business', 'technology', 'entertainment', 'sports', 'science', 'health'];
 
@@ -115,6 +116,7 @@ const News = () => {
           </div>
         </div>
         <NewsModal showModal={showModal} article={selectedArticle} onClose={() => setShowModal(false)} />
+        <Bookmarks />
         <div className="my-blogs">My Blogs</div>
         <div className="w-c-container">
           <Weather />
