@@ -1,4 +1,3 @@
-import demoImg from '../assets/img/demo.jpg';
 import './NewsModal.css';
 
 const NewsModal = ({ showModal, article, onClose }) => {
