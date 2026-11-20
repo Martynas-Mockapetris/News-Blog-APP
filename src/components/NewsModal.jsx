@@ -7,7 +7,7 @@ const NewsModal = ({ showModal, article, onClose }) => {
   }
 
   return (
-    <div className="modal-overlay">
+    <div className="modal-overlay news">
       <div className="modal-content">
         <span className="modal-close" onClick={onClose}>
           <i className="fa-solid fa-xmark"></i>

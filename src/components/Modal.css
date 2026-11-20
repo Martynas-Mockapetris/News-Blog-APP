@@ -8,6 +8,14 @@
   z-index: 1000;
 }
 
+.bookmarks {
+  z-index: 500;
+}
+
+.news {
+  z-index: 1000;
+}
+
 .modal-content {
   width: 90%;
   max-width: 60rem;
