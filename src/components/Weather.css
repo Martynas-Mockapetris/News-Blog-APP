@@ -1,7 +1,84 @@
 .weather {
-    width: 100%;
-    min-width: 28rem;
-    height: 45%;
-    background-color: #111214;
-    border-radius: 1rem;
+  width: 100%;
+  min-width: 28rem;
+  height: 45%;
+  background-color: #111214;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 3rem;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  row-gap: 1rem;
+}
+
+.search-top {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.search-top i {
+  font-size: 2.5rem;
+  color: #ddd;
+}
+
+.location {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.search-location {
+  position: relative;
+}
+
+.search-location input {
+  width: clamp(20rem, 14cqi, 30rem);
+  height: 4rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: 0.1rem solid #aaa;
+  font-size: 1.6rem;
+  color: #ddd;
+}
+
+.search-location i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1rem;
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.weather-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.5rem;
+}
+
+.weather-data i {
+  font-size: 5rem;
+}
+
+.weather-data i.bx-cloud-rain-wind-alt {
+  color: #4854b0;
+}
+
+.weather-type,
+.temp {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 2rem;
+  color: #fff;
 }

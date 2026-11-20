@@ -16,7 +16,7 @@ const Weather = () => {
       <div className="weather-data">
         <i className="bx bx-cloud-rain-wind-alt" />
         <div className="weather-type">Rainy</div>
-        <div className="temp">7°C</div>
+        <div className="temp">7°</div>
       </div>
     </div>
   );
