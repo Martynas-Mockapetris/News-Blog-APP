@@ -76,6 +76,26 @@
   color: #4854b0;
 }
 
+.weather-data i.bx-sun {
+  color: #f9d71c;
+}
+
+.weather-data i.bx-cloud {
+  color: #aaa;
+}
+
+.weather-data i.bx-cloud-snow {
+  color: #fff;
+}
+
+.weather-data i.bx-bolt {
+  color: #f9d71c;
+}
+
+.weather-data i.bx-cloud-fog {
+  color: #aaa;
+}
+
 .weather-type,
 .temp {
   font-family: 'Comfortaa', sans-serif;

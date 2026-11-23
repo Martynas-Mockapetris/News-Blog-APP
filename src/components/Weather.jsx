@@ -22,6 +22,27 @@ const Weather = () => {
     setLocation(e.target.value);
   };
 
+  const getWeatherIcon = (weatherType) => {
+    switch (weatherType) {
+      case 'Clear':
+        return <i className="bx bx-sun"></i>;
+      case 'Clouds':
+        return <i className="bx bx-cloud"></i>;
+      case 'Rain':
+      case 'Drizzle':
+        return <i className="bx bx-cloud-rain-wind-alt"></i>;
+      case 'Snow':
+        return <i className="bxf bx-cloud-snow"></i>;
+      case 'Thunderstorm':
+        return <i className="bx bx-bolt"></i>;
+      case 'Haze':
+      case 'Mist':
+        return <i className="bxf bx-cloud-fog"></i>;
+      default:
+        return <i className="bx bx-cloud"></i>;
+    }
+  };
+
   return (
     <div className="weather">
       <div className="search">
@@ -35,7 +56,7 @@ const Weather = () => {
         </div>
       </div>
       <div className="weather-data">
-        <i className="bx bx-cloud-rain-wind-alt" />
+        {data.weather && data.weather[0] && getWeatherIcon(data.weather[0].main)}
         <div className="weather-type">{data.weather ? data.weather[0].main : null}</div>
         <div className="temp">{data.main ? `${Math.floor(data.main.temp)}°` : null}</div>
       </div>
