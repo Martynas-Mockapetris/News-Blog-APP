@@ -43,6 +43,12 @@ const Weather = () => {
     setLocation(e.target.value);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      search();
+    }
+  };
+
   const getWeatherIcon = (weatherType) => {
     switch (weatherType) {
       case 'Clear':
@@ -72,7 +78,7 @@ const Weather = () => {
           <div className="location">{data.name}</div>
         </div>
         <div className="search-location">
-          <input type="text" placeholder="Enter location" value={location} onChange={handleInputChange} />
+          <input type="text" placeholder="Enter location" value={location} onChange={handleInputChange} onKeyPress={handleKeyPress} />
           <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
         </div>
       </div>
