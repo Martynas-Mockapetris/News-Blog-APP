@@ -102,3 +102,10 @@
   font-size: 2rem;
   color: #fff;
 }
+
+.not-found {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1.6rem;
+  color: #ddd;
+  margin-bottom: 12rem;
+}

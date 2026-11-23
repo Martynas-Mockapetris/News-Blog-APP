@@ -22,13 +22,21 @@ const Weather = () => {
   const search = async () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=257d40f82eff0a9ab2f7bd1d63e21454`;
 
-    const response = await axios.get(url);
-    // console.log(response.data);
-
-    setData(response.data);
-    // console.log(data);
-
-    setLocation('');
+    try {
+      const response = await axios.get(url);
+      if (response.data.cod !== 200) {
+        setData({ notFound: true });
+      } else {
+        setData(response.data);
+        setLocation('');
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        setData({ notFound: true });
+      } else {
+        console.error('Error fetching weather data:', error);
+      }
+    }
   };
 
   const handleInputChange = (e) => {
@@ -68,11 +76,14 @@ const Weather = () => {
           <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
         </div>
       </div>
-      <div className="weather-data">
-        {data.weather && data.weather[0] && getWeatherIcon(data.weather[0].main)}
-        <div className="weather-type">{data.weather ? data.weather[0].main : null}</div>
-        <div className="temp">{data.main ? `${Math.floor(data.main.temp)}°` : null}</div>
-      </div>
+      {data.notFound ?
+        <div className="not-found">Location not found! 😒</div>
+      : <div className="weather-data">
+          {data.weather && data.weather[0] && getWeatherIcon(data.weather[0].main)}
+          <div className="weather-type">{data.weather ? data.weather[0].main : null}</div>
+          <div className="temp">{data.main ? `${Math.floor(data.main.temp)}°` : null}</div>
+        </div>
+      }
     </div>
   );
 };
