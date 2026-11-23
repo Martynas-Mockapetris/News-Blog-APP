@@ -1,10 +1,23 @@
 import './Weather.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Weather = () => {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
+
+  useEffect(() => {
+    const fetchDefaultLocation = async () => {
+      const defaultLocation = 'Vilnius';
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=Metric&appid=257d40f82eff0a9ab2f7bd1d63e21454`;
+
+      const response = await axios.get(url);
+
+      setData(response.data);
+    };
+
+    fetchDefaultLocation();
+  }, []);
 
   const search = async () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=257d40f82eff0a9ab2f7bd1d63e21454`;
