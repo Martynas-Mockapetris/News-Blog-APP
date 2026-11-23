@@ -152,7 +152,12 @@ const News = () => {
           <Calendar />
         </div>
       </div>
-      <footer className="news-footer">Footer</footer>
+      <footer className="news-footer">
+        <p>
+          <span>My News & Blogs</span>
+        </p>
+        <p>&copy; {new Date().getFullYear()} My News & Blogs. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
